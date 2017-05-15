@@ -34,7 +34,7 @@ public class Store {
 		String saleItem = getItemName(input);
 		double itemPrice = getItemPrice(input);
 		int itemQuantity = getItemQuantity(input);
-		receipt += "\n" + itemCounter + ") " + itemQuantity + " x " + itemPrice + " " + saleItem;
+		receipt += "\n" + itemCounter + ") " + itemQuantity + " x $" + itemPrice + " " + saleItem;
 		saleTotal += itemPrice * (double) itemQuantity;
 		itemCounter++;
         returnMainMenu(input, receipt, saleTotal, itemCounter);
@@ -59,7 +59,7 @@ public class Store {
 
 	public static void printReceipt (Scanner input, String receipt, Double saleTotal, int itemCounter){
 		System.out.println(receipt);
-		System.out.printf("%f2%n", saleTotal);
+		System.out.printf("$%.2f%n", saleTotal);
 		returnMainMenu(input, receipt, saleTotal, itemCounter);
 	}
 
