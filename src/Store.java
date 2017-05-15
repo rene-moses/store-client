@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -58,8 +59,13 @@ public class Store {
 	}
 
 	public static void printReceipt (Scanner input, String receipt, Double saleTotal, int itemCounter){
+		Date date = new Date();
+		String border = "************";
+		System.out.println(border);
+		System.out.println(date);
 		System.out.println(receipt);
-		System.out.printf("$%.2f%n", saleTotal);
+		System.out.printf("Your total is: $%.2f%n%n", saleTotal);
+		System.out.println(border);
 		returnMainMenu(input, receipt, saleTotal, itemCounter);
 	}
 
