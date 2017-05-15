@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -65,8 +66,15 @@ public class Store {
 		System.out.println(date);
 		System.out.println(receipt);
 		System.out.printf("Your total is: $%.2f%n%n", saleTotal);
+//		customMoney("$###,###.###", saleTotal);
 		System.out.println(border);
 		returnMainMenu(input, receipt, saleTotal, itemCounter);
+	}
+
+	public static void customMoney (String pattern, double value){
+		DecimalFormat myFormatter = new DecimalFormat(pattern);
+		String output = myFormatter.format(value);
+		System.out.println(output + "\n");
 	}
 
 	public static void exitSystem() {
