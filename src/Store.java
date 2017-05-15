@@ -65,8 +65,8 @@ public class Store {
 		System.out.println(border);
 		System.out.println(date);
 		System.out.println(receipt);
-		System.out.printf("Your total is: $%.2f%n%n", saleTotal);
-//		customMoney("$###,###.###", saleTotal);
+//		System.out.printf("Your total is: $%.2f%n%n", saleTotal);
+		customMoney("$###,###.00", saleTotal);
 		System.out.println(border);
 		returnMainMenu(input, receipt, saleTotal, itemCounter);
 	}
