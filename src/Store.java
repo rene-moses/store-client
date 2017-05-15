@@ -6,31 +6,42 @@ import java.util.Scanner;
 public class Store {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		int menuItem = input.nextInt();
-		String receipt;
-		double saleTotal;
-		int itemCounter = 1;
+		String receipt = "";
+		double saleTotal = 0;
 
-		menuDisplay();
+		menuDisplay(input, receipt, saleTotal);
 
 
 	}
 
-	public static void menuDisplay(){
+	public static void menuDisplay(Scanner input, String receipt, double salesTotal){
 		System.out.println("1) Sale\n2) Print\n3) Exit");
+		int menuItem = input.nextInt();
+		if (menuItem ==1){
+			salesDisplay(input, receipt, salesTotal);
+		} else if (menuItem == 2){
+
+		}
+
 	}
 
-	public static double salesDisplay(){
-		int menuItem = input;
-		if(menuItem == 1){
-			System.out.println("Type item name: ");
-			String saleItem = input.next();
-			System.out.println("Enter cost of item");
-			double itemPrice = input.nextDouble();
-			System.out.println("Enter the quantity of the item being purchased");
-			int itemQuantity = input.nextInt();
-			receipt = itemCounter + ") " + itemQuantity + " x " + itemPrice + " " + saleItem;
-			saleTotal = itemPrice * (double) itemQuantity;
-		}
+	public static double salesDisplay(Scanner input, String receipt, double saleTotal){
+
+		int itemCounter = 1;
+		System.out.println("Type item name: ");
+		String saleItem = input.next();
+		System.out.println("Enter cost of item");
+		double itemPrice = input.nextDouble();
+		System.out.println("Enter the quantity of the item being purchased");
+		int itemQuantity = input.nextInt();
+		receipt = itemCounter + ") " + itemQuantity + " x " + itemPrice + " " + saleItem;
+		System.out.printf(receipt);
+		saleTotal = itemPrice * (double) itemQuantity;
+		System.out.println(saleTotal);
+		return saleTotal;
+
+
 	}
+
+
 }
