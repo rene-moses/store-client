@@ -12,6 +12,7 @@ public class Store {
 		menuDisplay(input, receipt, saleTotal);
 
 
+
 	}
 
 	public static void menuDisplay(Scanner input, String receipt, double salesTotal){
@@ -20,7 +21,10 @@ public class Store {
 		if (menuItem ==1){
 			salesDisplay(input, receipt, salesTotal);
 		} else if (menuItem == 2){
-
+			printReceipt(receipt);
+		} else if (menuItem == 3) {
+			System.out.println("Good Bye.");
+			System.exit(0);
 		}
 
 	}
@@ -43,5 +47,12 @@ public class Store {
 
 	}
 
+	public static void printReceipt (String receipt){
+		System.out.println(receipt);
+	}
+
+	public static void returnMainMenu (Scanner input){
+
+	}
 
 }
