@@ -51,7 +51,8 @@ public class Store {
 
 	public static String getItemName(Scanner input) {
 		System.out.println("Type item name: ");
-		return input.next();
+		input.nextLine();
+		return input.nextLine();
 	}
 
 	public static void printReceipt(Scanner input, String receipt, Double saleTotal, int itemCounter) {
