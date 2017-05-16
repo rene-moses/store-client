@@ -19,13 +19,21 @@ public class Store {
 
 	public static void menuDisplay(Scanner input, String receipt, double saleTotal, int itemCounter) {
 		System.out.println("1) Sale\n2) Print\n3) Exit");
-		int menuItem = input.nextInt();
-		if (menuItem == 1) {
-			salesDisplay(input, receipt, saleTotal, itemCounter);
-		} else if (menuItem == 2) {
-			printReceipt(input, receipt, saleTotal, itemCounter);
-		} else if (menuItem == 3) {
-			exitSystem();
+		String menuItem = input.nextLine();
+		switch (menuItem) {
+			case "1":
+				salesDisplay(input, receipt, saleTotal, itemCounter);
+				break;
+			case "2":
+				printReceipt(input, receipt, saleTotal, itemCounter);
+				break;
+			case "3":
+				exitSystem(input, receipt, saleTotal, itemCounter);
+				break;
+			default:
+				System.out.println("That's not a proper response");
+				menuDisplay(input, receipt, saleTotal, itemCounter);
+				break;
 		}
 	}
 
@@ -36,7 +44,7 @@ public class Store {
 		receipt += "\n" + itemCounter + ") " + itemQuantity + " x $" + itemPrice + " " + saleItem;
 		saleTotal += itemPrice * (double) itemQuantity;
 		itemCounter++;
-		returnMainMenu(input, receipt, saleTotal, itemCounter);
+		continueAddingItems(input, receipt, saleTotal, itemCounter);
 	}
 
 	public static int getItemQuantity(Scanner input) {
@@ -79,14 +87,27 @@ public class Store {
 		if ("y".equalsIgnoreCase(continueAnswer)) {
 			menuDisplay(input, receipt, saleTotal, itemCounter);
 		} else if ("n".equalsIgnoreCase(continueAnswer)) {
-			exitSystem();
+			exitSystem(input, receipt, saleTotal, itemCounter);
 		} else {
 			System.out.println("That's not a proper answer");
 			returnMainMenu(input, receipt, saleTotal, itemCounter);
 		}
 	}
 
-	public static void exitSystem() {
+	public static void continueAddingItems(Scanner input, String receipt, double saleTotal, int itemCounter) {
+		System.out.println("Do you want to add more items? (y/n)");
+		String continueAnswer = input.next();
+		if ("y".equalsIgnoreCase(continueAnswer)) {
+			salesDisplay(input, receipt, saleTotal, itemCounter);
+		} else if ("n".equalsIgnoreCase(continueAnswer)) {
+			returnMainMenu(input, receipt, saleTotal, itemCounter);
+		} else {
+			System.out.println("That's not a proper answer");
+			continueAddingItems(input, receipt, saleTotal, itemCounter);
+		}
+	}
+
+	public static void exitSystem(Scanner input, String receipt, double saleTotal, int itemCounter) {
 		System.out.println("Good Bye.");
 		System.exit(0);
 	}
