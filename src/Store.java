@@ -28,7 +28,7 @@ public class Store {
 				printReceipt(input, receipt, saleTotal, itemCounter);
 				break;
 			case "3":
-				exitSystem(input, receipt, saleTotal, itemCounter);
+				exitSystem();
 				break;
 			default:
 				System.out.println("That's not a proper response");
@@ -49,7 +49,9 @@ public class Store {
 
 	public static int getItemQuantity(Scanner input) {
 		System.out.println("Enter the quantity of the item being purchased");
-		return input.nextInt();
+		int qty = input.nextInt();
+		input.nextLine();
+		return qty;
 	}
 
 	public static double getItemPrice(Scanner input) {
@@ -59,7 +61,6 @@ public class Store {
 
 	public static String getItemName(Scanner input) {
 		System.out.println("Type item name: ");
-		input.nextLine();
 		return input.nextLine();
 	}
 
@@ -83,11 +84,11 @@ public class Store {
 
 	public static void returnMainMenu(Scanner input, String receipt, double saleTotal, int itemCounter) {
 		System.out.println("Do you wish to return to the main menu? (y/n)");
-		String continueAnswer = input.next();
+		String continueAnswer = input.nextLine();
 		if ("y".equalsIgnoreCase(continueAnswer)) {
 			menuDisplay(input, receipt, saleTotal, itemCounter);
 		} else if ("n".equalsIgnoreCase(continueAnswer)) {
-			exitSystem(input, receipt, saleTotal, itemCounter);
+			exitSystem();
 		} else {
 			System.out.println("That's not a proper answer");
 			returnMainMenu(input, receipt, saleTotal, itemCounter);
@@ -96,7 +97,7 @@ public class Store {
 
 	public static void continueAddingItems(Scanner input, String receipt, double saleTotal, int itemCounter) {
 		System.out.println("Do you want to add more items? (y/n)");
-		String continueAnswer = input.next();
+		String continueAnswer = input.nextLine();
 		if ("y".equalsIgnoreCase(continueAnswer)) {
 			salesDisplay(input, receipt, saleTotal, itemCounter);
 		} else if ("n".equalsIgnoreCase(continueAnswer)) {
@@ -107,7 +108,7 @@ public class Store {
 		}
 	}
 
-	public static void exitSystem(Scanner input, String receipt, double saleTotal, int itemCounter) {
+	public static void exitSystem() {
 		System.out.println("Good Bye.");
 		System.exit(0);
 	}
